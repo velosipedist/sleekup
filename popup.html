@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="popup.js" type="module"></script>
+    <style type="text/css">
+      a:link, a, a:visited {
+        color: cadetblue;
+      }
+
+      .items {
+        min-width: 400px;
+        min-height: 200px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .items .item {
+        margin-left: 0;
+        padding-left: 0;
+        margin-bottom: .6em;
+        line-height: 1.2;
+      }
+      .copy{
+        cursor: pointer;
+        text-decoration: underline;
+        color: darkgoldenrod;
+      }
+    </style>
+</head>
+<body>
+<h3>My scrum items</h3>
+<p class="copy" id="copy">Copy</p>
+<div id="scrum" class="items"></div>
+
+<template id="record">
+    <p class="item">
+        <a class="id"></a>
+        <span class="name"></span>
+    </p>
+</template>
+
+</body>
+</html>
