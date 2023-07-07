@@ -1,6 +1,6 @@
 {
   "name": "sleekup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Standup items easy picking for ClickUp. Made as a Chrome extension.",
   "main": "index.js",
   "license": "MIT",

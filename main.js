@@ -14,7 +14,7 @@ function catchDom (evt) {
       if (link) {
         const url = link.href;
         let taskId = '';
-        const taskIdMatch = url.match(/PDD-\d+/);
+        const taskIdMatch = url.match(/[a-z]+-\d+/i);
         if (taskIdMatch !== null) {
           taskId = taskIdMatch[0];
         }
