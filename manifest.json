@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "permissions": [
     "storage",
-    "https://app.clickup.com/*"
+    "https://app.clickup.com"
   ],
   "action": {
     "default_popup": "popup.html"
@@ -15,7 +15,7 @@
         "https://app.clickup.com/*"
       ],
       "css": [
-        "main.css"
+        "base.css"
       ],
       "js": [
         "lib.js",

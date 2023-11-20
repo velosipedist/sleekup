@@ -1,0 +1,1 @@
+npx tailwindcss -i ./base.dev.css -o ./base.css --watch

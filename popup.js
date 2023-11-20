@@ -27,21 +27,17 @@ async function readItems () {
 
 readItems();
 
-function copyData () {
+function copyAllData () {
   const contents = document.getElementById('scrum').innerHTML;
+
   const clipboardItem = new ClipboardItem({
     'text/plain': new Blob([contents], { type: 'text/plain' }),
     'text/html': new Blob([contents], { type: 'text/html' }),
   });
 
   navigator.clipboard.write([clipboardItem])
-    .then((result) => {
-      console.debug(`#scrummy result`, { result, contents,clipboardItem });
-    })
     .catch(console.error);
 }
 
-document.getElementById('copy').addEventListener('click', () => {
-  copyData();
-});
-
+const copyBtn = document.getElementById('copy');
+copyBtn.addEventListener('click', copyAllData);
