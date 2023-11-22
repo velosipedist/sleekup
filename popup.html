@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="./icons/regular.css"/>
   <link rel="stylesheet" href="base.css"/>
 </head>
-<body class="p-4 ">
-<div class="block border-gray-200 border-2 p-5 rounded-xl">
+<body class="p-4">
+<div class="block border-gray-200 border-2 p-5 rounded-xl w-[480px] min-h-fit">
   <!--  head-->
-  <div class="flex flex-row flex-nowrap items-center gap-1">
+  <div data-header class="flex flex-row flex-nowrap items-center gap-1">
     <h3 class="text-base mb-1">My scrum items</h3>
     <button
         id="copy"
@@ -33,16 +33,17 @@
     </button>
   </div>
   <!--  body-->
-  <div class="min-w-[480px] min-h-fit  invisible" data-items>
+  <div data-items class="hidden">
   </div>
-  <div class="text-lg text-center invisible" data-no-items>
-    Select some items in the tasks list first.
+  <div data-no-items class="text-sm text-center hidden">
+    <i class="fa fa-check-square fa-lg mr-1 text-cyan-700"></i>
+    Select some items in the tasks list first
   </div>
-  <div class="invisible text-right text-xs text-gray-500 mt-2" data-hours></div>
+  <div data-hours class="hidden text-right text-xs text-gray-500 mt-2"></div>
 </div>
 
 <template id="record">
-  <div class="item mb-1 group text-xs flex flex-row flex-nowrap">
+  <div class="item mb-1 group text-sm flex flex-row flex-nowrap">
     <a class="text-cyan-600 id whitespace-nowrap mr-1"></a>
     <span class="name text-black/90 text-ellipsis whitespace-nowrap overflow-hidden flex-shrink"></span>
   </div>

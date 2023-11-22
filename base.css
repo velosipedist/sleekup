@@ -599,6 +599,14 @@ video {
   width: 0.875rem;
 }
 
+.w-\[400px\] {
+  width: 400px;
+}
+
+.w-\[480px\] {
+  width: 480px;
+}
+
 .min-w-\[400px\] {
   min-width: 400px;
 }
@@ -745,6 +753,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .leading-3 {

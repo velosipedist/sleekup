@@ -8,16 +8,17 @@ async function readItems () {
   const data = await chrome.storage.sync.get('scrummy_items');
   const taskTemplate = document.getElementById('record');
   const itemsRoot = document.querySelector('[data-items]');
+  const headerNode = document.querySelector('[data-header]');
   itemsRoot.childNodes.forEach((n) => itemsRoot.removeChild(n));
 
   const emptyListNode = document.querySelector('[data-no-items]');
   const estimateNode = document.querySelector('[data-hours]');
-
-  if (!data?.scrummy_items) {
-    hide(itemsRoot, estimateNode);
+  if ((data?.scrummy_items?.length ?? 0) === 0) {
+    hide(itemsRoot, estimateNode, headerNode);
     show(emptyListNode);
     return;
   } else {
+    show(itemsRoot, headerNode);
     hide(emptyListNode);
   }
 

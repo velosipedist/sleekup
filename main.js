@@ -5,9 +5,8 @@ observer.observe(document.body,
 
 function catchDom (evt) {
   const itemsChecked = findAll('.cu-task-row.cu-task-row_selected');
+  const list = [];
   if (itemsChecked.length > 0) {
-    const list = [];
-
     itemsChecked.forEach((item, idx) => {
       const link = item.querySelector('a.cu-task-row-main__link');
 
@@ -21,14 +20,14 @@ function catchDom (evt) {
         const name = link.querySelector(
           '.cu-task-row-main__link-text-inner')?.textContent ?? 'no name';
 
-
-        const timeCell = item.querySelector('[data-test="time-estimates-view__value"]');
+        const timeCell = item.querySelector(
+          '[data-test="time-estimates-view__value"]');
         const time = timeCell?.innerText;
         list.push({ name, url, taskId, time });
       }
     });
-
-    chrome.storage.sync.set({ scrummy_items: list });
   }
+
+  chrome.storage.sync.set({ scrummy_items: list });
 }
 
