@@ -15,8 +15,8 @@
         "https://app.clickup.com/*"
       ],
       "css": [
-        ".icons/fontawesome.css",
-        ".icons/regular.css",
+        "./icons/fontawesome.css",
+        "./icons/regular.css",
         "base.css"
       ],
       "js": [
@@ -24,8 +24,5 @@
         "main.js"
       ]
     }
-  ],
-  "web_accessible_resources": [
-    "font/*.woff2"
   ]
 }
