@@ -3,3 +3,7 @@
 .DS_Store
 /.idea
 /.netbeans
+/build
+/build.zip
+*.pem
+/*.crx
