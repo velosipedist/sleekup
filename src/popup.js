@@ -1,18 +1,28 @@
-window.onload = () => {
-  const copyBtn = document.getElementById('copy');
-  copyBtn.addEventListener('click', copyAllData);
-  readItems();
+import './base.css';
+import './icons/fontawesome.css';
+import './icons/solid.css';
+
+import { hide, show, find } from './lib/dom';
+import { parseHours } from './lib/parseHours';
+
+window.onload = async () => {
+  const copyBtn = find('#copy');
+  copyBtn.addEventListener('click', () => {
+    copyAllData(document.querySelector('[data-items]'));
+  });
+  const data = await chrome.storage.sync.get('scrummy_items');
+  repaintItems(data);
 };
 
-async function readItems () {
-  const data = await chrome.storage.sync.get('scrummy_items');
-  const taskTemplate = document.getElementById('record');
-  const itemsRoot = document.querySelector('[data-items]');
-  const headerNode = document.querySelector('[data-header]');
+async function repaintItems (data) {
+  const taskTemplate = find('#record');
+  const itemsRoot = find('[data-items]');
+  const headerNode = find('[data-header]');
   itemsRoot.childNodes.forEach((n) => itemsRoot.removeChild(n));
 
-  const emptyListNode = document.querySelector('[data-no-items]');
-  const estimateNode = document.querySelector('[data-hours]');
+  const emptyListNode = find('[data-no-items]');
+  const estimateNode = find('[data-hours]');
+
   if ((data?.scrummy_items?.length ?? 0) === 0) {
     hide(itemsRoot, estimateNode, headerNode);
     show(emptyListNode);
@@ -22,6 +32,7 @@ async function readItems () {
     hide(emptyListNode);
   }
 
+  // dedupe items
   const dataDenormalized = data.scrummy_items.reduce((acc, next) => {
     if (acc.some((d) => d.taskId === next.taskId)) {
       return acc;
@@ -46,13 +57,13 @@ async function readItems () {
   show(itemsRoot);
 
   if (hoursTotal > 0) {
-    estimateNode.innerText = `${hoursTotal} hours`;
+    estimateNode.querySelector("[data-text]").innerText = `${hoursTotal} hours`;
     show(estimateNode);
   }
 }
 
-function copyAllData () {
-  const contents = document.querySelector('[data-items]').innerHTML;
+function copyAllData (element) {
+  const contents = element.innerHTML;
 
   const clipboardItem = new ClipboardItem({
     'text/plain': new Blob([contents], { type: 'text/plain' }),
@@ -63,28 +74,4 @@ function copyAllData () {
     .catch(console.error);
 }
 
-function show (...elements) {
-  for (var element of elements) {
-    element.classList.remove('invisible');
-    element.classList.remove('hidden');
-  }
-}
 
-function hide (...elements) {
-  for (var element of elements) {
-    element.classList.add('hidden');
-  }
-}
-
-function parseHours (input) {
-  let result = 0;
-  const hoursMatch = input.match(/(\d+)h/);
-  if (hoursMatch) {
-    result += parseInt(hoursMatch[1]);
-  }
-  const daysMatch = input.match(/(\d+)d/);
-  if (daysMatch) {
-    result += parseInt(daysMatch[1]) * 8;
-  }
-  return result;
-}

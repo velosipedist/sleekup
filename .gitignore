@@ -1,9 +1,8 @@
-/yarn.lock
 /node_modules
 .DS_Store
 /.idea
 /.netbeans
 /build
-/build.zip
+/build-dev
 *.pem
 /*.crx

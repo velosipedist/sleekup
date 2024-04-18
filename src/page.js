@@ -1,3 +1,5 @@
+import { findAll, find } from "./lib/dom";
+
 const observer = new MutationObserver(catchCheckbox);
 
 observer.observe(document.body, {
