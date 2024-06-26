@@ -3,18 +3,14 @@
   "name": "Sleekup",
   "version": "0.0.3",
   "permissions": [
-    "storage",
-    "https://app.clickup.com"
+    "storage"
+  ],
+  "host_permissions": [
+    "https://app.clickup.com/*"
   ],
   "action": {
     "default_popup": "popup.html"
   },
-  "files": [
-    "popup.html",
-    "style.css",
-    "page.js",
-    "popup.js"
-  ],
   "content_scripts": [
     {
       "matches": [
