@@ -7,7 +7,7 @@
 <body class="p-4">
 <div class="block border-gray-200 border-2 p-5 rounded-xl w-[480px] min-h-fit">
   <!--  head-->
-  <div data-header class="flex flex-row flex-nowrap items-center gap-1">
+  <div slot="header" class="flex flex-row flex-nowrap items-center gap-1">
     <h3 class="text-base mb-1">Checked items</h3>
     <button
         id="copy"
@@ -30,22 +30,23 @@
     </button>
   </div>
   <!--  body-->
-  <div data-items class="hidden">
-  </div>
-  <div data-no-items class="text-sm text-center hidden">
+  <div slot="items" class="hidden"></div>
+
+  <div slot="no-items" class="text-sm text-center hidden">
     <i class="fa fa-check-square fa-lg mr-1 text-cyan-700"></i>
     Select some items in the tasks list first
   </div>
-  <div data-hours class="hidden text-right text-xs text-gray-500 mt-2">
-    <span data-icon><i class="fa-solid fa-clock fa-sm"></i></span>
-    <span data-text></span>
+
+  <div slot="hours" class="hidden text-right text-xs text-gray-500 mt-2">
+    <span><i class="fa-solid fa-clock fa-sm"></i></span>
+    <span slot="text"></span>
   </div>
 </div>
 
 <template id="record">
-  <div class="item mb-1 group text-sm flex flex-row flex-nowrap">
-    <a class="text-cyan-600 id whitespace-nowrap mr-1"></a>
-    <span class="name text-black/90 text-ellipsis whitespace-nowrap overflow-hidden flex-shrink"></span>
+  <div class="mb-1 group text-sm flex flex-row flex-nowrap">
+    <a slot="id" class="text-cyan-600 whitespace-nowrap mr-1"></a>
+    <span slot="name" class="text-black/90 text-ellipsis whitespace-nowrap overflow-hidden flex-shrink"></span>
   </div>
 </template>
 
