@@ -22,7 +22,7 @@ function catchCheckbox(mutations) {
   if (links === null) {
     return;
   }
-  const idParser = new TaskIdParser(/[A-Z]{3,5}-\d+/);
+  const idParser = new TaskIdParser();
 
   const list = [];
   links.forEach((link, idx) => {
