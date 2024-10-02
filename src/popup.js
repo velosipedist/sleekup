@@ -11,7 +11,7 @@ window.onload = async () => {
     copyAllData(document.querySelector('[slot=items]'));
   });
   const data = await chrome.storage.sync.get('scrummy_items');
-  console.debug(`#data`, {data, copyBtn});
+
   repaintItems(data);
 };
 
@@ -47,12 +47,15 @@ async function repaintItems(data) {
   }, []);
 
   let hoursTotal = 0;
-  console.debug(`#data repaint`, {data, taskTemplate, itemsRoot, headerNode, dataDenormalized});
+
   dataDenormalized.forEach((item) => {
     const record = taskTemplate.content.cloneNode(true);
-
-    record.querySelector('[slot=id]').textContent = item.taskId;
-    record.querySelector('[slot=id]').href = item.url;
+    if (item.taskId) {
+      record.querySelector('[slot=id]').textContent = item.taskId;
+      record.querySelector('[slot=id]').href = item.url;
+    } else {
+      record.querySelector('[slot=id]').remove();
+    }
 
     record.querySelector('[slot=name]').textContent = item.name.trim();
     record.querySelector('[slot=name]').setAttribute('title', item.name.trim());
