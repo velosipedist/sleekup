@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sleekup",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "permissions": [
     "storage"
   ],
@@ -9,7 +9,11 @@
     "https://app.clickup.com/*"
   ],
   "action": {
+    "default_title": "foo",
     "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {

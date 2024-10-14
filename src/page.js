@@ -35,5 +35,6 @@ function catchCheckbox(mutations) {
   });
 
   chrome.storage.sync?.set({scrummy_items: list});
+  chrome.runtime.sendMessage({type: 'badge.update', number: list.length ?? 0});
 }
 

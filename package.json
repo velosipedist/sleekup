@@ -1,6 +1,6 @@
 {
   "name": "sleekup",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Standup items easy picking for ClickUp. Made as a Chrome extension.",
   "main": "index.js",
   "license": "MIT",
@@ -17,7 +17,8 @@
   "scripts": {
     "dev-page": "vite --config vite.config.page.js build --watch --mode development",
     "dev-popup": "vite --config vite.config.popup.js build --watch --mode development",
-    "dev": "rm -Rf ./build-dev/*.* & sh -c 'npm run dev-page & npm run dev-popup'",
+    "dev-background": "vite --config vite.config.background.js build --watch --mode development",
+    "dev": "rm -Rf ./build-dev/*.* & sh -c 'npm run dev-page & npm run dev-popup & npm run dev-background'",
     "build-page": "vite --config vite.config.page.js build --mode production",
     "build-popup": "vite --config vite.config.popup.js build --mode production",
     "build": "rm -Rf ./build/*.* & npm run build-page & npm run build-popup"
